@@ -26,8 +26,7 @@ import { OldEnglish, Mint, About } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
 //====MY CUSTOM IMPORTS
-import mainnetZoraAddresses from "@zoralabs/v3/dist/addresses/1.json";
-import linedPaperBackground from "./Lined_Paper_Background_For_Site.png";
+import mainnetZoraAddresses from "@zoralabs/v3/dist/addresses/4.json";yar
 //====MY CUSTOM IMPORTS
 
 const { ethers } = require("ethers");
@@ -56,14 +55,14 @@ const { ethers } = require("ethers");
 const DEBUG = true;
 const NETWORKCHECK = true;
 
-const targetNetworkString = "mainnet" // <------ change this as you deploy do other networks
+const targetNetworkString = "rinkeby" // <------ change this as you deploy do other networks
 
 const web3Modal = Web3ModalSetup();
 
 // 🛰 providers
 const providers = [
-  "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
-  `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
+  "https://eth-rinkeby.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
+  `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY}`,
   "https://rpc.scaffoldeth.io:48544",
 ];
 
@@ -71,11 +70,11 @@ function App(props) {
   const oldEnglishContract = "EightPack";
 
   //======External Contract Pointers (points to contract ABIs stored in react-app/src/contracts/external_contracts.js )
-  const zoraTransferHelperContract = "zoraTransferHelperMAINNET"; 
-  const zmmContract = "zoraModuleManagerMAINNET";
-  const zoraAsksContract = "zoraAsksV1_1ModuleMAINNET";
-  const lostandfoundNFTContract = "lostandfoundContractMAINNET"; 
-  const lostandfoundNFTContractAddress = "0x6C0845540C0b7B868C3a1739246fC99aDEDC8036"; // change this to the nft contract you want to be interacting with
+  const zoraTransferHelperContract = "zoraTransferHelper"; 
+  const zmmContract = "zoraTransferHelper";
+  const zoraAsksContract = "zoraModuleManager";
+  const lostandfoundNFTContract = "lostandfoundContract"; 
+  const lostandfoundNFTContractAddress = "0x1D9Fc63F0eBb2188520D22418fA5aFC4bC219371"; // change this to the nft contract you want to be interacting with
 
   // specify all the chains your app is available on. Eg: ['localhost', 'mainnet', ...otherNetworks ]
   // reference './constants.js' for other networks
@@ -228,7 +227,6 @@ function App(props) {
 
   return (
     <div
-    style={{background: `url(${linedPaperBackground})`, backgroundSize: "cover"  }}
     className="App"
     >
       <div className="header">
@@ -255,17 +253,6 @@ function App(props) {
             <Link to="/mint">                
               <button className="mintButton" >
                 MINT
-              </button>
-            </Link>
-          </Menu.Item>
-
-          <Menu.Item
-            style={{width: "29%", margin: 0, padding: 0 }}
-            key="/about"
-          >
-            <Link to="/about">
-              <button className="aboutButton" >
-                ABOUT
               </button>
             </Link>
           </Menu.Item>
